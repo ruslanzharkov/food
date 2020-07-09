@@ -23,7 +23,7 @@ function SearchScreen(props: Props) {
   }
 
   useEffect(() => {
-    props.thunkGetBusinessesData('pasta');
+    props.thunkGetBusinessesData('');
   }, [])
 
   useEffect(() => {

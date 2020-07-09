@@ -3,14 +3,14 @@ import {
   FETCH_BUSINESSES_DATA_REQUEST,
   FETCH_BUSINESSES_DATA_SUCCESS,
   FETCH_BUSINESSES_DATA_ERROR,
-  BusinessesState,
+  BusinessesState, Business,
 } from './types';
 
 // type-safe initial state
 export const initialState: BusinessesState = {
-  data: {} as any, // types will be soon
+  data: [] as Business[],
   loading: false,
-  error: {} as any
+  error: {} as Error
 }
 
 export const businessSearchReducer: Reducer<BusinessesState> = (state = initialState, action) => {

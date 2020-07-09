@@ -2,10 +2,15 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
 import SearchInput from '../common/SearchInput';
-import {AUTO_CAPITALIZE} from '../common/constants/input';
+import {AUTO_CAPITALIZE} from '../../constants/input';
+import {Props} from './ConnectedSearchScreen';
 
-function SearchScreen() {
+function SearchScreen(props: Props) {
   const [searchTerm, setSearchTerm] = React.useState('');
+
+  const onTermSubmit = () => {
+    props.thunkGetBusinessesData(searchTerm);
+  }
 
   return (
     <View style={styles.searchContainer}>
@@ -14,8 +19,8 @@ function SearchScreen() {
         placeholder={'Search'}
         autoCorrect={false}
         searchTermValue={searchTerm}
-        onSearchTermChange={(newSearchTerm: string) => setSearchTerm(newSearchTerm)}
-        onSearchTermSubmit={() => console.log('yep')}
+        onSearchTermChange={setSearchTerm}
+        onSearchTermSubmit={onTermSubmit}
       />
 
     </View>

@@ -1,4 +1,4 @@
-import {AUTO_CAPITALIZE} from '../constants/input';
+import {AUTO_CAPITALIZE} from '../../../constants/input';
 
 export interface SearchInputInputProps {
   autoCorrect?: boolean

@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {SearchScreen} from '../components/SearchScreen';
+import ConnectedSearchScreen from '../components/SearchScreen';
 
 type RootStackParamList = {
   Search: undefined;
@@ -12,7 +12,7 @@ const StackLayout = () => (
   <RootStack.Navigator initialRouteName="Search">
     <RootStack.Screen
       name="Search"
-      component={SearchScreen}
+      component={ConnectedSearchScreen}
       options={{ title: 'Business Search' }}
     />
   </RootStack.Navigator>

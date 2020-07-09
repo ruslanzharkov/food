@@ -2,15 +2,15 @@ import {Reducer} from 'redux';
 import {
   FETCH_BUSINESSES_DATA_REQUEST,
   FETCH_BUSINESSES_DATA_SUCCESS,
-  BusinessesState,
   FETCH_BUSINESSES_DATA_ERROR,
+  BusinessesState,
 } from './types';
 
 // type-safe initial state
 export const initialState: BusinessesState = {
   data: {} as any, // types will be soon
   loading: false,
-  error: false
+  error: {} as any
 }
 
 export const businessSearchReducer: Reducer<BusinessesState> = (state = initialState, action) => {

@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchToProps =>
     thunkGetBusinessesData: thunkGetBusinessesData,
   },
     dispatch
-  ) ;
+  );
 
 export type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
-export default connect(mapDispatchToProps, mapDispatchToProps)(SearchScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(SearchScreen);

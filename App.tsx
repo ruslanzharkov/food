@@ -14,8 +14,9 @@ import {Provider} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import StackNavigation from './src/navigation';
 import configureStore from './src/store/configureStore';
+import {ApplicationMainState} from './src/store';
 
-const initialState = {} as any;
+const initialState = {} as ApplicationMainState;
 const store = configureStore(initialState);
 
 const App = () => {

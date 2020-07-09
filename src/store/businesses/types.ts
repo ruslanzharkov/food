@@ -5,7 +5,7 @@ export const FETCH_BUSINESSES_DATA_ERROR = 'FETCH_BUSINESSES_DATA_ERROR';
 export interface BusinessesState {
   readonly data: any;
   readonly loading: boolean;
-  readonly error?: boolean;
+  readonly error?: any;
 }
 
 interface FetchBusinessesDataRequestedAction {
@@ -17,9 +17,9 @@ interface FetchBusinessesDataSuccessAction {
   payload: any;
 }
 
-interface FetchBusinessesDataSuccessError {
+interface FetchBusinessesDataError {
   type: typeof FETCH_BUSINESSES_DATA_ERROR;
-  payload: object;
+  payload: any;
 }
 
-export type BusinessesActionTypes = FetchBusinessesDataRequestedAction | FetchBusinessesDataSuccessAction | FetchBusinessesDataSuccessError;
+export type BusinessesActionTypes = FetchBusinessesDataRequestedAction | FetchBusinessesDataSuccessAction | FetchBusinessesDataError;

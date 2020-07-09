@@ -16,10 +16,11 @@ export const thunkGetBusinessesData = (term: string): ThunkAction<void, Applicat
           location: 'toronto'
         }
       });
-      console.log(response.data.businesses.length)
-      dispatch(fetchBusinessesDataSuccess({}));
+      dispatch(fetchBusinessesDataSuccess(response.data.businesses));
     } catch (e) {
-      console.log(e);
-      dispatch(fetchBusinessesDataError({}));
+      const error = {
+        message: 'Something went wrong'
+      }
+      dispatch(fetchBusinessesDataError(error));
     }
   }

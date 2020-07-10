@@ -10,15 +10,15 @@ interface BusinessListItem {
 
 const BusinessListItem = ({business}: BusinessListItem) => {
   return (
-    <View>
+    <View style={styles.listItemContainer}>
       <Image style={styles.image} source={{uri: business.image_url}} />
       <Text style={styles.businessName}>{business.name}</Text>
-      <View>
+      <View style={styles.businessInfoContainer}>
         <View style={styles.businessInfo}>
           <AntDesign name="star" size={16} color="black" />
           <Text>{business.rating} Stars</Text>
         </View>
-        <View style={styles.businessInfo}>
+        <View style={styles.businessInfoReviews}>
           <AntDesign name="eye" size={16} color="black" />
           <Text>{business.review_count} Reviews</Text>
         </View>
@@ -30,15 +30,27 @@ const BusinessListItem = ({business}: BusinessListItem) => {
 export default BusinessListItem;
 
 const styles = StyleSheet.create({
+  listItemContainer: {
+    marginLeft: 15
+  },
   image: {
     width: 250,
     height: 120,
-    borderRadius: 4
+    borderRadius: 4,
+    marginBottom: 5
   },
   businessName: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginBottom: 2
+  },
+  businessInfoContainer: {
+    flexDirection: 'row',
   },
   businessInfo: {
     flexDirection: 'row'
+  },
+  businessInfoReviews: {
+    flexDirection: 'row',
+    marginLeft: 10
   }
 });

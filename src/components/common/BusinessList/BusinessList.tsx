@@ -14,7 +14,7 @@ const renderItem = ({item}: {item: Business}) => {
 
 const BusinessList = ({title, businesses}: BusinessListProps) => {
   return (
-    <View>
+    <View style={styles.listContainer}>
       <Text style={styles.title}>{title}</Text>
       <FlatList
         horizontal
@@ -29,8 +29,13 @@ const BusinessList = ({title, businesses}: BusinessListProps) => {
 export default BusinessList;
 
 const styles = StyleSheet.create({
+  listContainer: {
+    marginBottom: 10
+  },
   title: {
     fontSize: 18,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginLeft: 15,
+    marginBottom: 10
   }
 })

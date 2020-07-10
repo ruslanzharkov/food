@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 
 import SearchInput from '../common/SearchInput';
 import BusinessList from '../common/BusinessList';
@@ -47,18 +47,23 @@ function SearchScreen(props: Props) {
         onSearchTermSubmit={onTermSubmit}
       />
       {error ? <Text>{error}</Text> : null}
-      <BusinessList
-        title="Cost Effective"
-        businesses={lowCostBusinesses}
-      />
-      <BusinessList
-        title="Bit Pricier"
-        businesses={averageCostBusinesses}
-      />
-      <BusinessList
-        title="Big Spender"
-        businesses={highCostBusinesses}
-      />
+      <ScrollView>
+        <BusinessList
+          title="Cost Effective"
+          showsHorizontalScrollIndicator={false}
+          businesses={lowCostBusinesses}
+        />
+        <BusinessList
+          title="Bit Pricier"
+          showsHorizontalScrollIndicator={false}
+          businesses={averageCostBusinesses}
+        />
+        <BusinessList
+          title="Big Spender"
+          showsHorizontalScrollIndicator={false}
+          businesses={highCostBusinesses}
+        />
+      </ScrollView>
     </View>
   );
 }

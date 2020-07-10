@@ -6,18 +6,20 @@ import BusinessListItem from '../BusinessListItem';
 interface BusinessListProps {
   title: string;
   businesses: Business[];
+  showsHorizontalScrollIndicator?: boolean;
 }
 
 const renderItem = ({item}: {item: Business}) => {
   return <BusinessListItem business={item}/>
 }
 
-const BusinessList = ({title, businesses}: BusinessListProps) => {
+const BusinessList = ({title, businesses, showsHorizontalScrollIndicator}: BusinessListProps) => {
   return (
     <View style={styles.listContainer}>
       <Text style={styles.title}>{title}</Text>
       <FlatList
         horizontal
+        showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
         data={businesses}
         keyExtractor={(business) => business.id}
         renderItem={renderItem}

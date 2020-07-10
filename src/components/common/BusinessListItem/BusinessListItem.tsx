@@ -15,11 +15,11 @@ const BusinessListItem = ({business}: BusinessListItem) => {
       <Text style={styles.businessName}>{business.name}</Text>
       <View style={styles.businessInfoContainer}>
         <View style={styles.businessInfo}>
-          <AntDesign name="star" size={16} color="black" />
+          <AntDesign name="star" size={16} color="black" style={styles.starIcon} />
           <Text>{business.rating} Stars</Text>
         </View>
         <View style={styles.businessInfoReviews}>
-          <AntDesign name="eye" size={16} color="black" />
+          <AntDesign name="eye" size={16} color="black" style={styles.reviewIcon} />
           <Text>{business.review_count} Reviews</Text>
         </View>
       </View>
@@ -51,6 +51,12 @@ const styles = StyleSheet.create({
   },
   businessInfoReviews: {
     flexDirection: 'row',
-    marginLeft: 10
+    marginLeft: 10,
+  },
+  reviewIcon: {
+    alignSelf: 'center'
+  },
+  starIcon: {
+    alignSelf: 'center'
   }
 });

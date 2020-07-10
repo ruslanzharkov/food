@@ -5,11 +5,11 @@ import SearchInput from '../common/SearchInput';
 import BusinessList from '../common/BusinessList';
 
 import {AUTO_CAPITALIZE} from '../../constants/input';
-import {Props} from './ConnectedSearchScreen';
+import {Props} from './ConnectedBusinessesScreen';
 import {filterBusinessesByPriceType} from '../../utils/filterBusinessesByPriceType';
 import {Business} from '../../store/businesses/types';
 
-function SearchScreen(props: Props) {
+function BusinessesScreen(props: Props) {
   const [searchTerm, setSearchTerm] = useState('');
   const [lowCostBusinesses, setLowCostBusinesses] = useState([] as Business[]);
   const [averageCostBusinesses, setAverageCostBusinesses] = useState([] as Business[]);
@@ -68,7 +68,7 @@ function SearchScreen(props: Props) {
   );
 }
 
-export default SearchScreen;
+export default BusinessesScreen;
 
 const styles = StyleSheet.create({
   searchContainer: {

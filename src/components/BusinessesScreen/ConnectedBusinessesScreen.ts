@@ -5,7 +5,7 @@ import {Action, bindActionCreators, Dispatch} from 'redux';
 import {ApplicationMainState} from '../../store';
 import {BusinessesState} from '../../store/businesses/types';
 import {thunkGetBusinessesData} from '../../store/businesses/thunks';
-import SearchScreen from './SearchScreen';
+import BusinessesScreen from './BusinessesScreen';
 
 type StateToProps = {
   businesses: BusinessesState;
@@ -27,4 +27,4 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchToProps =>
   );
 
 export type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
-export default connect(mapStateToProps, mapDispatchToProps)(SearchScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(BusinessesScreen);

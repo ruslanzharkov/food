@@ -1,17 +1,17 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import ConnectedSearchScreen from '../components/SearchScreen';
+import ConnectedSearchScreen from '../components/BusinessesScreen';
 
 type RootStackParamList = {
-  Search: undefined;
+  Business: undefined;
 }
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
 const StackLayout = () => (
-  <RootStack.Navigator initialRouteName="Search">
+  <RootStack.Navigator initialRouteName="Business">
     <RootStack.Screen
-      name="Search"
+      name="Business"
       component={ConnectedSearchScreen}
       options={{ title: 'Business Search' }}
     />

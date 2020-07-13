@@ -1,5 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 import {Business} from '../../../store/businesses/types';
 import BusinessListItem from '../BusinessListItem';
 import {StackNavigationScreens} from '../../../navigation/types';
@@ -8,10 +10,10 @@ interface BusinessListProps {
   title: string;
   businesses: Business[];
   showsHorizontalScrollIndicator?: boolean;
-  navigation: any;
 }
 
-const BusinessList = ({title, businesses, navigation, showsHorizontalScrollIndicator}: BusinessListProps) => {
+const BusinessList = ({title, businesses, showsHorizontalScrollIndicator}: BusinessListProps) => {
+  const navigation = useNavigation()
   return (
     <View style={styles.listContainer}>
       <Text style={styles.title}>{title}</Text>
@@ -23,7 +25,9 @@ const BusinessList = ({title, businesses, navigation, showsHorizontalScrollIndic
         renderItem={
           ({item}: {item: Business}) => {
           return (
-            <TouchableOpacity onPress={() => navigation.navigate(StackNavigationScreens.BusinessDetail)}>
+            <TouchableOpacity onPress={() => navigation.navigate(StackNavigationScreens.BusinessDetail, {
+              id: item.id
+            })}>
               <BusinessListItem business={item}/>
             </TouchableOpacity>
           )

@@ -9,7 +9,7 @@ import {Props} from './ConnectedBusinessesScreen';
 import {filterBusinessesByPriceType} from '../../utils/filterBusinessesByPriceType';
 import {Business} from '../../store/businesses/types';
 
-function BusinessesScreen({businesses, navigation, thunkGetBusinessesData}: Props) {
+function BusinessesScreen({businesses, thunkGetBusinessesData}: Props) {
   const [searchTerm, setSearchTerm] = useState('');
   const [lowCostBusinesses, setLowCostBusinesses] = useState([] as Business[]);
   const [averageCostBusinesses, setAverageCostBusinesses] = useState([] as Business[]);
@@ -52,19 +52,16 @@ function BusinessesScreen({businesses, navigation, thunkGetBusinessesData}: Prop
           title="Cost Effective"
           showsHorizontalScrollIndicator={false}
           businesses={lowCostBusinesses}
-          navigation={navigation}
         />
         <BusinessList
           title="Bit Pricier"
           showsHorizontalScrollIndicator={false}
           businesses={averageCostBusinesses}
-          navigation={navigation}
         />
         <BusinessList
           title="Big Spender"
           showsHorizontalScrollIndicator={false}
           businesses={highCostBusinesses}
-          navigation={navigation}
         />
       </ScrollView>
     </View>

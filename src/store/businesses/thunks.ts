@@ -1,7 +1,6 @@
 import {Action} from 'redux';
 import {ThunkAction} from 'redux-thunk';
 import {ApplicationMainState} from '../index';
-import {BusinessesState} from './types';
 import yelpApi from '../../configs/yelpApi';
 import {fetchBusinessesDataError, fetchBusinessesDataRequest, fetchBusinessesDataSuccess} from './actions';
 

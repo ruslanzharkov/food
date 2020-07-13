@@ -6,13 +6,14 @@ import {Action, bindActionCreators, Dispatch} from 'redux';
 import {ApplicationMainState} from '../../store';
 import BusinessDetailScreen from './BusinessDetailScreen';
 import {RootStackParamList, StackNavigationScreens} from '../../navigation/types';
+import {thunkGetBusinessDetailData} from '../../store/businessDetail/thunks';
 
 type StateToProps = {
   businessDetailInfo: any;
 }
 
 type DispatchToProps = {
-
+  thunkGetBusinessDetailData(businessId: string): ThunkAction<void, ApplicationMainState, null, Action<string>>;
 }
 
 const mapStateToProps = (state: ApplicationMainState): StateToProps => ({
@@ -21,7 +22,7 @@ const mapStateToProps = (state: ApplicationMainState): StateToProps => ({
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchToProps =>
   bindActionCreators({
-
+      thunkGetBusinessDetailData: thunkGetBusinessDetailData
   },
     dispatch
   );

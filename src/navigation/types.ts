@@ -1,6 +1,6 @@
 export type RootStackParamList = {
   Business: undefined;
-  BusinessDetail: {businessId: string}
+  BusinessDetail: {id: string}
 }
 
 export enum StackNavigationScreens {

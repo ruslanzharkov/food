@@ -9,21 +9,21 @@ import {Props} from './ConnectedBusinessesScreen';
 import {filterBusinessesByPriceType} from '../../utils/filterBusinessesByPriceType';
 import {Business} from '../../store/businesses/types';
 
-function BusinessesScreen(props: Props) {
+function BusinessesScreen({businesses, navigation, thunkGetBusinessesData}: Props) {
   const [searchTerm, setSearchTerm] = useState('');
   const [lowCostBusinesses, setLowCostBusinesses] = useState([] as Business[]);
   const [averageCostBusinesses, setAverageCostBusinesses] = useState([] as Business[]);
   const [highCostBusinesses, setHighCostBusinesses] = useState([] as Business[]);
   const [error, setError] = useState('');
-  const businessesError = props.businesses?.error;
-  const businessesCollection = props.businesses.data;
+  const businessesError = businesses?.error;
+  const businessesCollection = businesses.data;
 
   const onTermSubmit = () => {
-    props.thunkGetBusinessesData(searchTerm);
+    thunkGetBusinessesData(searchTerm);
   }
 
   useEffect(() => {
-    props.thunkGetBusinessesData('');
+    thunkGetBusinessesData('');
   }, [])
 
   useEffect(() => {
@@ -52,16 +52,19 @@ function BusinessesScreen(props: Props) {
           title="Cost Effective"
           showsHorizontalScrollIndicator={false}
           businesses={lowCostBusinesses}
+          navigation={navigation}
         />
         <BusinessList
           title="Bit Pricier"
           showsHorizontalScrollIndicator={false}
           businesses={averageCostBusinesses}
+          navigation={navigation}
         />
         <BusinessList
           title="Big Spender"
           showsHorizontalScrollIndicator={false}
           businesses={highCostBusinesses}
+          navigation={navigation}
         />
       </ScrollView>
     </View>

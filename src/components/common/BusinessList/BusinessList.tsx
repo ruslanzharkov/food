@@ -1,19 +1,17 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import {Business} from '../../../store/businesses/types';
 import BusinessListItem from '../BusinessListItem';
+import {StackNavigationScreens} from '../../../navigation/types';
 
 interface BusinessListProps {
   title: string;
   businesses: Business[];
   showsHorizontalScrollIndicator?: boolean;
+  navigation: any;
 }
 
-const renderItem = ({item}: {item: Business}) => {
-  return <BusinessListItem business={item}/>
-}
-
-const BusinessList = ({title, businesses, showsHorizontalScrollIndicator}: BusinessListProps) => {
+const BusinessList = ({title, businesses, navigation, showsHorizontalScrollIndicator}: BusinessListProps) => {
   return (
     <View style={styles.listContainer}>
       <Text style={styles.title}>{title}</Text>
@@ -22,7 +20,15 @@ const BusinessList = ({title, businesses, showsHorizontalScrollIndicator}: Busin
         showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
         data={businesses}
         keyExtractor={(business) => business.id}
-        renderItem={renderItem}
+        renderItem={
+          ({item}: {item: Business}) => {
+          return (
+            <TouchableOpacity onPress={() => navigation.navigate(StackNavigationScreens.BusinessDetail)}>
+              <BusinessListItem business={item}/>
+            </TouchableOpacity>
+          )
+          }
+        }
       />
     </View>
   )

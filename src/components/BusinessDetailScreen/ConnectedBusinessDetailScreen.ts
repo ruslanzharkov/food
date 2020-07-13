@@ -1,9 +1,11 @@
 import {connect} from 'react-redux';
 import {ThunkAction} from 'redux-thunk';
+import { StackScreenProps } from '@react-navigation/stack';
 import {Action, bindActionCreators, Dispatch} from 'redux';
 
 import {ApplicationMainState} from '../../store';
 import BusinessDetailScreen from './BusinessDetailScreen';
+import {RootStackParamList, StackNavigationScreens} from '../../navigation/types';
 
 type StateToProps = {
   businessDetailInfo: any;
@@ -24,5 +26,5 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchToProps =>
     dispatch
   );
 
-export type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
+export type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & StackScreenProps<RootStackParamList, StackNavigationScreens.BusinessDetail>;
 export default connect(mapStateToProps, mapDispatchToProps)(BusinessDetailScreen);

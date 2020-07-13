@@ -1,5 +1,4 @@
 import {action} from 'typesafe-actions';
-
 import {
   BusinessesActionTypes,
   FETCH_BUSINESSES_DATA_REQUEST,

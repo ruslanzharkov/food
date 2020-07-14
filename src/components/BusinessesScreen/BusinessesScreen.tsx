@@ -52,16 +52,19 @@ function BusinessesScreen({businesses, thunkGetBusinessesData}: Props) {
           title="Cost Effective"
           showsHorizontalScrollIndicator={false}
           businesses={lowCostBusinesses}
+          loading={businesses.loading}
         />
         <BusinessList
           title="Bit Pricier"
           showsHorizontalScrollIndicator={false}
           businesses={averageCostBusinesses}
+          loading={businesses.loading}
         />
         <BusinessList
           title="Big Spender"
           showsHorizontalScrollIndicator={false}
           businesses={highCostBusinesses}
+          loading={businesses.loading}
         />
       </ScrollView>
     </View>

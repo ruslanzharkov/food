@@ -1,4 +1,4 @@
-import {Business, Location} from '../businesses/types';
+import {Business, BusinessError, Location} from '../businesses/types';
 
 export const FETCH_BUSINESS_DETAIL_REQUEST = 'FETCH_BUSINESS_DETAIL_REQUEST';
 export const FETCH_BUSINESS_DETAIL_SUCCESS = 'FETCH_BUSINESS_DETAIL_SUCCESS';
@@ -22,6 +22,12 @@ export type BusinessDetailActionTypes =
   FetchBusinessDetailRequestAction |
   FetchBusinessDetailSuccessAction |
   FetchBusinessDetailErrorAction;
+
+export interface BusinessDetailState {
+  readonly data: BusinessDetail;
+  readonly loading: boolean;
+  readonly error?: BusinessError
+}
 
 export interface BusinessDetail extends Business {
   is_claimed: boolean;

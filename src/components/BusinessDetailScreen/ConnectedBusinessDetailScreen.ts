@@ -7,9 +7,10 @@ import {ApplicationMainState} from '../../store';
 import BusinessDetailScreen from './BusinessDetailScreen';
 import {RootStackParamList, StackNavigationScreens} from '../../navigation/types';
 import {thunkGetBusinessDetailData} from '../../store/businessDetail/thunks';
+import {BusinessDetailState} from '../../store/businessDetail/types';
 
 type StateToProps = {
-  businessDetailInfo: any;
+  businessDetail: BusinessDetailState;
 }
 
 type DispatchToProps = {
@@ -17,7 +18,7 @@ type DispatchToProps = {
 }
 
 const mapStateToProps = (state: ApplicationMainState): StateToProps => ({
-  businessDetailInfo: {}
+  businessDetail: state.businessDetail
 })
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchToProps =>

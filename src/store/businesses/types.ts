@@ -25,10 +25,10 @@ export type BusinessesActionTypes =
 export interface BusinessesState {
   readonly data: Business[];
   readonly loading: boolean;
-  readonly error?: Error;
+  readonly error?: BusinessError;
 }
 
-export interface Error {
+export interface BusinessError {
   message: string;
 }
 

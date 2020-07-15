@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Image, Text, StyleSheet} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 import {Business} from '../../../store/businesses/types';
 
@@ -15,11 +15,11 @@ const BusinessListItem = ({business}: BusinessListItem) => {
       <Text style={styles.businessName}>{business.name}</Text>
       <View style={styles.businessInfoContainer}>
         <View style={styles.businessInfo}>
-          <AntDesign name="star" size={16} style={styles.starIcon} />
+          <FontAwesomeIcon name="star" size={16} style={styles.starIcon} />
           <Text style={styles.businessInfoTitle}>{business.rating} Stars</Text>
         </View>
         <View style={styles.businessInfoReviews}>
-          <AntDesign name="eye" size={16} color="black" style={styles.reviewIcon} />
+          <FontAwesomeIcon name="eye" size={16} style={styles.reviewIcon} />
           <Text style={styles.businessInfoTitle}>{business.review_count} Reviews</Text>
         </View>
       </View>
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   reviewIcon: {
     alignSelf: 'center',
-    color: '#f7c01d',
+    color: '#000',
     paddingRight: 3
   }
 });

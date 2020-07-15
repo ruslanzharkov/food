@@ -55,7 +55,13 @@ const BusinessList = ({title, loading, businesses, showsHorizontalScrollIndicato
             return (
               <TouchableOpacity
                 onPress={
-                  () => navigation.navigate(StackNavigationScreens.BusinessDetail, {id: item.id})
+                  () => navigation.navigate(
+                      StackNavigationScreens.BusinessDetail,
+                      {
+                        id: item.id,
+                        name: item.name
+                      }
+                    )
                 }>
                 <BusinessListItem business={item}/>
               </TouchableOpacity>

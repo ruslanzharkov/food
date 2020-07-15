@@ -6,7 +6,7 @@ import {Business} from '../../../store/businesses/types';
 import BusinessListItem from '../BusinessListItem';
 import {StackNavigationScreens} from '../../../navigation/types';
 import BusinessListItemLoader from '../BusinessListItemLoader';
-import ContentLoader, { Rect, Circle, Path } from "react-content-loader/native"
+import ContentLoader, { Rect } from "react-content-loader/native"
 
 interface BusinessListProps {
   title: string;
@@ -25,7 +25,7 @@ const BusinessList = ({title, loading, businesses, showsHorizontalScrollIndicato
           height={30}
           viewBox="0 0 170 30"
           backgroundColor="#f3f3f3"
-          foregroundColor="#ecebeb"
+          foregroundColor="#e2e0e0"
         >
           <Rect x="15" y="0" rx="3" ry="3" width="140" height="20" />
         </ContentLoader>
@@ -52,13 +52,14 @@ const BusinessList = ({title, loading, businesses, showsHorizontalScrollIndicato
         keyExtractor={(business) => business.id}
         renderItem={
           ({item}: {item: Business}) => {
-          return (
-            <TouchableOpacity onPress={() => navigation.navigate(StackNavigationScreens.BusinessDetail, {
-              id: item.id
-            })}>
-              <BusinessListItem business={item}/>
-            </TouchableOpacity>
-          )
+            return (
+              <TouchableOpacity
+                onPress={
+                  () => navigation.navigate(StackNavigationScreens.BusinessDetail, {id: item.id})
+                }>
+                <BusinessListItem business={item}/>
+              </TouchableOpacity>
+            )
           }
         }
       />

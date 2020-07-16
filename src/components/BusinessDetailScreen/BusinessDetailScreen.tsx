@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, Image, StyleSheet, Alert, ScrollView} from 'react-native';
+import {View, Text, Image, StyleSheet, ScrollView} from 'react-native';
 import {Props} from './index';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {addCommaForStringInCollection} from '../../utils/stringConverter';
 
-const BusinessDetailScreen = ({route, navigation, thunkGetBusinessDetailData, businessDetail}: Props) => {
+const BusinessDetailScreen = ({route, thunkGetBusinessDetailData, businessDetail}: Props) => {
   const [error, setError] = useState<string>('');
   const businessDetailError = businessDetail?.error;
   const businessDetailInfo = businessDetail.data;
 
   useEffect(() => {
-    navigation.setOptions({ title: route.params.name })
     thunkGetBusinessDetailData(route.params.id);
   }, []);
 
@@ -32,14 +33,29 @@ const BusinessDetailScreen = ({route, navigation, thunkGetBusinessDetailData, bu
   return (
     <View style={{position: 'relative'}}>
       <Image source={{uri: businessDetailInfo.image_url}} style={styles.businessImage} />
-      <View style={styles.businessDetailInfoOverlay}>
+      <View style={styles.businessDetailOverlay}>
         <ScrollView style={styles.scrollView}>
           <>
             <View style={styles.businessDetailInfoStar}>
               <FontAwesomeIcon name="star" size={16} style={styles.starIcon} />
-              <Text style={styles.businessDetailInfoTitle}>{businessDetailInfo.rating} Stars</Text>
+              <Text style={styles.businessDetailTitle}>{businessDetailInfo.rating} Stars</Text>
             </View>
-            <Text style={styles.businessDetailInfoName}>{businessDetailInfo.name}</Text>
+            <Text style={styles.businessDetailName}>{businessDetailInfo.name}</Text>
+            <View style={styles.categories}>
+              {businessDetailInfo.categories.map((category, index) => (
+                <Text style={styles.businessDetailCategoryTitle}>
+                  {addCommaForStringInCollection(category.title, businessDetailInfo.categories.length, index)}
+                </Text>
+              ))}
+            </View>
+            <View style={styles.businessDetailLocation}>
+              <MaterialIcons name="location-on" size={20} color="black" />
+              {businessDetailInfo.location.display_address.map((displayAddress, index) => (
+                <Text>
+                  {addCommaForStringInCollection(displayAddress, businessDetailInfo.location.display_address.length, index)}
+                </Text>
+              ))}
+            </View>
           </>
         </ScrollView>
       </View>
@@ -54,7 +70,7 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: 240
   },
-  businessDetailInfoOverlay: {
+  businessDetailOverlay: {
     flex: 1,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -71,13 +87,24 @@ export const styles = StyleSheet.create({
   businessDetailInfoStar: {
     flexDirection: 'row',
   },
-  businessDetailInfoTitle: {
-    color: '#505059'
+  businessDetailTitle: {
+    color: '#252528'
   },
-  businessDetailInfoName: {
+  businessDetailName: {
     marginTop: 5,
     fontSize: 24,
     fontWeight: 'bold'
+  },
+  categories: {
+    flexDirection: 'row'
+  },
+  businessDetailCategoryTitle: {
+    color: '#505059',
+    fontSize: 14
+  },
+  businessDetailLocation: {
+    marginTop: 10,
+    flexDirection: 'row'
   },
   starIcon: {
     alignSelf: 'center',

@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   businessInfoTitle: {
-    color: '#505059'
+    color: '#252528'
   },
   businessInfoReviews: {
     flexDirection: 'row',

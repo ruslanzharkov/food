@@ -16,7 +16,7 @@ const StackLayout = () => (
     <RootStack.Screen
       name={StackNavigationScreens.BusinessDetail}
       component={ConnectedBusinessDetailScreen}
-      options={({ route }) => ({ title: route.params.name })}
+      options={{ title: ''}}
     />
   </RootStack.Navigator>
 );

@@ -49,15 +49,15 @@ const BusinessDetailScreen = ({route, thunkGetBusinessDetailData, businessDetail
             <Text style={styles.businessDetailName}>{businessDetailInfo.name}</Text>
             <View style={styles.categories}>
               {businessDetailInfo.categories.map((category, index) => (
-                <Text style={styles.businessDetailCategoryTitle}>
+                <Text style={styles.businessDetailCategoryTitle} key={index}>
                   {addCommaForStringInCollection(category.title, businessDetailInfo.categories.length, index)}
                 </Text>
               ))}
             </View>
             <View style={styles.businessDetailLocation}>
-              <MaterialIcons name="location-on" size={20} color="black" />
+              <MaterialIcons name="location-on" size={20} style={styles.locationIcon} />
               {businessDetailInfo.location.display_address.map((displayAddress, index) => (
-                <Text>
+                <Text key={index}>
                   {addCommaForStringInCollection(displayAddress, businessDetailInfo.location.display_address.length, index)}
                 </Text>
               ))}
@@ -111,7 +111,8 @@ export const styles = StyleSheet.create({
   businessDetailLocation: {
     marginTop: 10,
     flexDirection: 'row',
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
+    flexWrap: 'wrap'
   },
   starIcon: {
     alignSelf: 'center',
@@ -119,4 +120,7 @@ export const styles = StyleSheet.create({
     paddingRight: 3,
     borderColor: '#000'
   },
+  locationIcon: {
+    color: '#000'
+  }
 });

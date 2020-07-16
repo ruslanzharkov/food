@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, Image, StyleSheet, ScrollView} from 'react-native';
+import {isEmpty} from 'lodash';
+
 import {Props} from './index';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -28,6 +30,10 @@ const BusinessDetailScreen = ({route, thunkGetBusinessDetailData, businessDetail
     return (
       <Text>{error}</Text>
     )
+  }
+
+  if (isEmpty(businessDetailInfo)) {
+    return null;
   }
 
   return (
@@ -104,7 +110,8 @@ export const styles = StyleSheet.create({
   },
   businessDetailLocation: {
     marginTop: 10,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'flex-end'
   },
   starIcon: {
     alignSelf: 'center',

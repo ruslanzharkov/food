@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, Image, StyleSheet, ScrollView} from 'react-native';
+import {View, Text, Image, StyleSheet, ScrollView, FlatList} from 'react-native';
 import {isEmpty} from 'lodash';
 
 import {Props} from './index';
@@ -40,7 +40,7 @@ const BusinessDetailScreen = ({route, thunkGetBusinessDetailData, businessDetail
     <View style={{position: 'relative'}}>
       <Image source={{uri: businessDetailInfo.image_url}} style={styles.businessImage} />
       <View style={styles.businessDetailOverlay}>
-        <ScrollView style={styles.scrollView}>
+        <View style={styles.businessDetailContainer}>
           <>
             <View style={styles.businessDetailInfoStar}>
               <FontAwesomeIcon name="star" size={16} style={styles.starIcon} />
@@ -62,8 +62,17 @@ const BusinessDetailScreen = ({route, thunkGetBusinessDetailData, businessDetail
                 </Text>
               ))}
             </View>
+              <FlatList
+                data={businessDetailInfo.photos.slice(1, businessDetailInfo.photos.length)}
+                contentContainerStyle={{ paddingBottom: '50%'}}
+                keyExtractor={(photo, index) => index.toString()}
+                showsVerticalScrollIndicator={false}
+                renderItem={({item}) => (
+                  <Image source={{uri: item}} style={styles.businessDetailImage}/>
+                )}
+              />
           </>
-        </ScrollView>
+        </View>
       </View>
     </View>
   )
@@ -86,9 +95,16 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     top: '90%'
   },
-  scrollView: {
+  businessDetailContainer: {
+    flex: 1,
     marginHorizontal: 15,
     marginTop: 20
+  },
+  businessDetailImage: {
+    width: '100%',
+    height: 290,
+    marginBottom: 10,
+    borderRadius: 20
   },
   businessDetailInfoStar: {
     flexDirection: 'row',
@@ -110,6 +126,7 @@ export const styles = StyleSheet.create({
   },
   businessDetailLocation: {
     marginTop: 10,
+    marginBottom: 20,
     flexDirection: 'row',
     alignItems: 'flex-end',
     flexWrap: 'wrap'

@@ -37,11 +37,10 @@ const BusinessDetailScreen = ({route, thunkGetBusinessDetailData, businessDetail
   }
 
   return (
-    <View style={{position: 'relative'}}>
+    <>
       <Image source={{uri: businessDetailInfo.image_url}} style={styles.businessImage} />
       <View style={styles.businessDetailOverlay}>
         <View style={styles.businessDetailContainer}>
-          <>
             <View style={styles.businessDetailInfoStar}>
               <FontAwesomeIcon name="star" size={16} style={styles.starIcon} />
               <Text style={styles.businessDetailTitle}>{businessDetailInfo.rating} Stars</Text>
@@ -62,19 +61,19 @@ const BusinessDetailScreen = ({route, thunkGetBusinessDetailData, businessDetail
                 </Text>
               ))}
             </View>
-              <FlatList
-                data={businessDetailInfo.photos.slice(1, businessDetailInfo.photos.length)}
-                contentContainerStyle={{ paddingBottom: '50%'}}
-                keyExtractor={(photo, index) => index.toString()}
-                showsVerticalScrollIndicator={false}
-                renderItem={({item}) => (
-                  <Image source={{uri: item}} style={styles.businessDetailImage}/>
-                )}
-              />
-          </>
+                <FlatList
+                  data={businessDetailInfo.photos.slice(1, businessDetailInfo.photos.length)}
+                  contentContainerStyle={{marginBottom: '100%'}}
+                  keyExtractor={(photo, index) => index.toString()}
+                  showsVerticalScrollIndicator={false}
+                  renderItem={({item}) => (
+                    <Image source={{uri: item}} style={styles.businessDetailImage}/>
+                  )}
+                />
+
         </View>
       </View>
-    </View>
+    </>
   )
 }
 
@@ -83,17 +82,14 @@ export default BusinessDetailScreen;
 export const styles = StyleSheet.create({
   businessImage: {
     width: '100%',
-    height: 240
+    height: 200
   },
   businessDetailOverlay: {
     flex: 1,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     backgroundColor: '#fff',
-    width: '100%',
-    height: '300%',
-    position: 'absolute',
-    top: '90%'
+    marginTop: -20
   },
   businessDetailContainer: {
     flex: 1,

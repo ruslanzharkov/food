@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import ContentLoader, { Rect } from 'react-content-loader/native';
 
 import {Business} from '../../../store/businesses/types';
 import BusinessListItem from '../BusinessListItem';
 import {StackNavigationScreens} from '../../../navigation/types';
 import BusinessListItemLoader from '../BusinessListItemLoader';
-import ContentLoader, { Rect } from "react-content-loader/native"
 
 interface BusinessListProps {
   title: string;
@@ -20,7 +20,7 @@ const BusinessList = ({title, loading, businesses, showsHorizontalScrollIndicato
     return (
       <>
         <ContentLoader
-          speed={1}
+          speed={0.5}
           width={170}
           height={30}
           viewBox="0 0 170 30"

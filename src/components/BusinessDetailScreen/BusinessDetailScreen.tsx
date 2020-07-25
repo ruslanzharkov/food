@@ -21,7 +21,7 @@ const BusinessDetailScreen = ({route, thunkGetBusinessDetailData, businessDetail
     setError(businessDetailError?.message ? businessDetailError?.message : '');
   }, [businessDetailError]);
 
-  if (!businessDetail.loading) {
+  if (businessDetail.loading) {
     return (
       <BusinessDetailLoader/>
     );

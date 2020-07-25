@@ -3,6 +3,7 @@ import {Dimensions, StyleSheet, View} from 'react-native';
 import ContentLoader, {Rect} from 'react-content-loader/native';
 
 const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 const BusinessDetailLoader = () => {
   return (
@@ -19,10 +20,10 @@ const BusinessDetailLoader = () => {
       </ContentLoader>
       <View style={styles.detailedInfoLoader}>
         <ContentLoader
-          height={200}
+          height={screenHeight}
           width={screenWidth}
           speed={0.5}
-          viewBox={`0 0 ${screenWidth} 200`}
+          viewBox={`0 0 ${screenWidth} ${screenHeight}`}
           backgroundColor="#d9d9d9"
           foregroundColor="#ecebeb"
         >
@@ -32,6 +33,8 @@ const BusinessDetailLoader = () => {
           <Rect x="120" y="85" rx="3" ry="3" width="90" height="10" />
           <Rect x="225" y="85" rx="3" ry="3" width="90" height="10" />
           <Rect x="15" y="110" rx="3" ry="3" width={screenWidth - 50} height="15" />
+          <Rect x="15" y="145" rx="20" ry="20" width={screenWidth - 30} height="290" />
+          <Rect x="15" y="450" rx="20" ry="20" width={screenWidth - 30} height="290" />
         </ContentLoader>
       </View>
     </View>

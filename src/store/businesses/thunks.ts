@@ -18,7 +18,7 @@ export const thunkGetBusinessesData = (term: string): ThunkAction<void, Applicat
       dispatch(fetchBusinessesDataSuccess(response.data.businesses));
     } catch (e) {
       const error = {
-        message: 'Something went wrong'
+        message: 'Something went wrong, please, try again later'
       }
       dispatch(fetchBusinessesDataError(error));
     }

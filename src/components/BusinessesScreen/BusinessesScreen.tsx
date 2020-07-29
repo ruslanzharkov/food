@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 
 import SearchInput from '../common/SearchInput';
 import BusinessList from '../common/BusinessList';
@@ -8,6 +8,7 @@ import {AUTO_CAPITALIZE} from '../../constants/input';
 import {Props} from './ConnectedBusinessesScreen';
 import {filterBusinessesByPriceType} from '../../utils/filterBusinessesByPriceType';
 import {Business} from '../../store/businesses/types';
+import ErrorMessage from '../common/ErrorMessage/ErrorMessage';
 
 function BusinessesScreen({businesses, thunkGetBusinessesData}: Props) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -50,27 +51,30 @@ function BusinessesScreen({businesses, thunkGetBusinessesData}: Props) {
         onSearchTermChange={setSearchTerm}
         onSearchTermSubmit={onTermSubmit}
       />
-      {error ? <Text>{error}</Text> : null}
-      <ScrollView>
-        <BusinessList
-          title="Cost Effective"
-          showsHorizontalScrollIndicator={false}
-          businesses={lowCostBusinesses}
-          loading={businesses.loading}
-        />
-        <BusinessList
-          title="Bit Pricier"
-          showsHorizontalScrollIndicator={false}
-          businesses={averageCostBusinesses}
-          loading={businesses.loading}
-        />
-        <BusinessList
-          title="Big Spender"
-          showsHorizontalScrollIndicator={false}
-          businesses={highCostBusinesses}
-          loading={businesses.loading}
-        />
-      </ScrollView>
+      {
+        error ? <ErrorMessage message={error}/> : (
+          <ScrollView>
+            <BusinessList
+              title="Cost Effective"
+              showsHorizontalScrollIndicator={false}
+              businesses={lowCostBusinesses}
+              loading={businesses.loading}
+            />
+            <BusinessList
+              title="Bit Pricier"
+              showsHorizontalScrollIndicator={false}
+              businesses={averageCostBusinesses}
+              loading={businesses.loading}
+            />
+            <BusinessList
+              title="Big Spender"
+              showsHorizontalScrollIndicator={false}
+              businesses={highCostBusinesses}
+              loading={businesses.loading}
+            />
+          </ScrollView>
+        )
+      }
     </View>
   );
 }

@@ -20,7 +20,12 @@ Project uses react native community code style from ESLint.
 - [Icons pack](https://github.com/oblador/react-native-vector-icons)
 
 ## iOS Demo
-![](ios-demo.gif)
+Loading process            |  App with data
+:-------------------------:|:-------------------------:
+![](skeleton-main.png)  |  ![](main.png)
+![](skeleton-detail.png)  |  ![](detail.png)
+
+
 
 ## Installation
 ``Make sure you have node > 9``

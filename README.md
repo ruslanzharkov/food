@@ -25,6 +25,12 @@ Loading process            |  App with data
 ![](skeleton-main.png)  |  ![](main.png)
 ![](skeleton-detail.png)  |  ![](detail.png)
 
+## Android Demo
+Loading process            |  App with data
+:-------------------------:|:-------------------------:
+![](android-skeleton-main.png)  |  ![](android-main.png)
+![](android-skeleton-detail.png)  |  ![](android-detail.png)
+
 
 
 ## Installation

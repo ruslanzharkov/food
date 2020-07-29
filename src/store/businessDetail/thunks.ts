@@ -13,7 +13,7 @@ export const thunkGetBusinessDetailData = (businessId: string): ThunkAction<void
 
     } catch (e) {
       const error = {
-        message: "Can't get details data, try again later"
+        message: "Can not get business detail info, try again later"
       }
       dispatch(fetchBusinessDetailError(error));
     }

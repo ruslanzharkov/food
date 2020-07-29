@@ -7,6 +7,7 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {addCommaForStringInCollection} from '../../utils/stringConverter';
 import BusinessDetailLoader from '../common/BusinessDetailLoader';
+import ErrorMessage from '../common/ErrorMessage/ErrorMessage';
 
 const BusinessDetailScreen = ({route, thunkGetBusinessDetailData, businessDetail}: Props) => {
   const [error, setError] = useState<string>('');
@@ -29,7 +30,7 @@ const BusinessDetailScreen = ({route, thunkGetBusinessDetailData, businessDetail
 
   if (error) {
     return (
-      <Text>{error}</Text>
+      <ErrorMessage message={error}/>
     );
   }
 
@@ -136,5 +137,5 @@ export const styles = StyleSheet.create({
   },
   locationIcon: {
     color: '#000',
-  },
+  }
 });

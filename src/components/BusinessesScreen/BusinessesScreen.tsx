@@ -11,6 +11,7 @@ import {Business} from '../../store/businesses/types';
 
 function BusinessesScreen({businesses, thunkGetBusinessesData}: Props) {
   const [searchTerm, setSearchTerm] = useState('');
+  const [memoizedSearchTerm, setMemoizedSearchTerm] = useState('');
   const [lowCostBusinesses, setLowCostBusinesses] = useState([] as Business[]);
   const [averageCostBusinesses, setAverageCostBusinesses] = useState([] as Business[]);
   const [highCostBusinesses, setHighCostBusinesses] = useState([] as Business[]);
@@ -19,7 +20,10 @@ function BusinessesScreen({businesses, thunkGetBusinessesData}: Props) {
   const businessesCollection = businesses.data;
 
   const onTermSubmit = () => {
-    thunkGetBusinessesData(searchTerm);
+    if (searchTerm !== memoizedSearchTerm) {
+      thunkGetBusinessesData(searchTerm);
+      setMemoizedSearchTerm(searchTerm);
+    }
   }
 
   useEffect(() => {

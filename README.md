@@ -42,3 +42,13 @@ Loading process            |  App with data
 5. `npx react-native run-ios` or `npx react-native run-android`
 6. `let's see running app!`
 
+
+##Troubleshooting
+Android issues and their resolving:
+1. Remove debug/prod apk file from `android/app/build/outputs/apk/*`
+2. Clean project from terminal gradle or android IDE
+
+iOS issues:
+1. Remove `Pods` folder from `ios/Pods` and install from scratch
+
+Make sure u are cleaning watchman, metro bundler

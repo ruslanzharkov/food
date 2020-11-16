@@ -43,7 +43,7 @@ Loading process            |  App with data
 6. `let's see running app!`
 
 
-##Troubleshooting
+## Troubleshooting 
 Android issues and their resolving:
 1. Remove debug/prod apk file from `android/app/build/outputs/apk/*`
 2. Clean project from terminal gradle or android IDE

@@ -3,17 +3,22 @@ import {
   FETCH_BUSINESSES_DATA_REQUEST,
   FETCH_BUSINESSES_DATA_SUCCESS,
   FETCH_BUSINESSES_DATA_ERROR,
-  BusinessesState, Business, BusinessError,
+  BusinessesState,
+  Business,
+  BusinessError,
 } from './types';
 
 // type-safe initial state
 export const initialState: BusinessesState = {
   data: [] as Business[],
   loading: false,
-  error: {} as BusinessError
-}
+  error: {} as BusinessError,
+};
 
-export const businessesReducer: Reducer<BusinessesState> = (state = initialState, action) => {
+export const businessesReducer: Reducer<BusinessesState> = (
+  state = initialState,
+  action,
+) => {
   switch (action.type) {
     case FETCH_BUSINESSES_DATA_REQUEST: {
       return {...state, loading: true};
@@ -28,4 +33,4 @@ export const businessesReducer: Reducer<BusinessesState> = (state = initialState
       return state;
     }
   }
-}
+};

@@ -11,5 +11,5 @@ export interface ApplicationMainState {
 
 export default combineReducers({
   businesses: businessesReducer,
-  businessDetail: businessDetailReducer
+  businessDetail: businessDetailReducer,
 });

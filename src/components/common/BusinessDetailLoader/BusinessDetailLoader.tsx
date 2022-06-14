@@ -28,25 +28,53 @@ const BusinessDetailLoader = () => {
           foregroundColor="#ecebeb"
         >
           <Rect x="15" y="15" rx="4" ry="4" width="130" height="15" />
-          <Rect x="15" y="45" rx="3" ry="3" width={screenWidth - 100} height="30" />
+          <Rect
+            x="15"
+            y="45"
+            rx="3"
+            ry="3"
+            width={screenWidth - 100}
+            height="30"
+          />
           <Rect x="15" y="85" rx="3" ry="3" width="90" height="10" />
           <Rect x="120" y="85" rx="3" ry="3" width="90" height="10" />
           <Rect x="225" y="85" rx="3" ry="3" width="90" height="10" />
-          <Rect x="15" y="110" rx="3" ry="3" width={screenWidth - 50} height="15" />
-          <Rect x="15" y="145" rx="20" ry="20" width={screenWidth - 30} height="290" />
-          <Rect x="15" y="450" rx="20" ry="20" width={screenWidth - 30} height="290" />
+          <Rect
+            x="15"
+            y="110"
+            rx="3"
+            ry="3"
+            width={screenWidth - 50}
+            height="15"
+          />
+          <Rect
+            x="15"
+            y="145"
+            rx="20"
+            ry="20"
+            width={screenWidth - 30}
+            height="290"
+          />
+          <Rect
+            x="15"
+            y="450"
+            rx="20"
+            ry="20"
+            width={screenWidth - 30}
+            height="290"
+          />
         </ContentLoader>
       </View>
     </View>
   );
-}
+};
 
 export default BusinessDetailLoader;
 
 const styles = StyleSheet.create({
   loaderContainer: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   detailedInfoLoader: {
     flex: 1,
@@ -54,5 +82,5 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     backgroundColor: '#fff',
     marginTop: -20,
-  }
-})
+  },
+});

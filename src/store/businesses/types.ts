@@ -17,10 +17,9 @@ interface FetchBusinessesDataErrorAction {
 }
 
 export type BusinessesActionTypes =
-  FetchBusinessesDataRequestedAction |
-  FetchBusinessesDataSuccessAction |
-  FetchBusinessesDataErrorAction;
-
+  | FetchBusinessesDataRequestedAction
+  | FetchBusinessesDataSuccessAction
+  | FetchBusinessesDataErrorAction;
 
 export interface BusinessesState {
   readonly data: Business[];
@@ -56,7 +55,7 @@ export interface Business {
   coordinates: Coordinates;
   image_url: string;
   location: Location;
-  distance: number
+  distance: number;
   transactions: string[];
 }
 

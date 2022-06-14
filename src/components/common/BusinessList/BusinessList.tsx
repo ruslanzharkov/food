@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import ContentLoader, { Rect } from 'react-content-loader/native';
+import {useNavigation} from '@react-navigation/native';
+import ContentLoader, {Rect} from 'react-content-loader/native';
 
 import {Business} from '../../../store/businesses/types';
 import BusinessListItem from '../BusinessListItem';
@@ -15,7 +15,12 @@ interface BusinessListProps {
   showsHorizontalScrollIndicator?: boolean;
 }
 
-const BusinessList = ({title, loading, businesses, showsHorizontalScrollIndicator}: BusinessListProps) => {
+const BusinessList = ({
+  title,
+  loading,
+  businesses,
+  showsHorizontalScrollIndicator,
+}: BusinessListProps) => {
   if (loading) {
     return (
       <>
@@ -30,18 +35,18 @@ const BusinessList = ({title, loading, businesses, showsHorizontalScrollIndicato
           <Rect x="15" y="0" rx="3" ry="3" width="140" height="20" />
         </ContentLoader>
         <View style={styles.businessLoadersContainer}>
-          <BusinessListItemLoader/>
-          <BusinessListItemLoader/>
+          <BusinessListItemLoader />
+          <BusinessListItemLoader />
         </View>
       </>
-    )
+    );
   }
 
   if (businesses.length === 0) {
     return null;
   }
 
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   return (
     <View style={styles.listContainer}>
       <Text style={styles.title}>{title}</Text>
@@ -50,42 +55,38 @@ const BusinessList = ({title, loading, businesses, showsHorizontalScrollIndicato
         showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
         data={businesses}
         keyExtractor={(business) => business.id}
-        renderItem={
-          ({item}: {item: Business}) => {
-            return (
-              <TouchableOpacity
-                onPress={
-                  () => navigation.navigate(
-                      StackNavigationScreens.BusinessDetail,
-                      {
-                        id: item.id,
-                        name: item.name
-                      }
-                    )
-                }>
-                <BusinessListItem business={item}/>
-              </TouchableOpacity>
-            )
-          }
-        }
+        renderItem={({item}: {item: Business}) => {
+          return (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate(StackNavigationScreens.BusinessDetail, {
+                  id: item.id,
+                  name: item.name,
+                })
+              }
+            >
+              <BusinessListItem business={item} />
+            </TouchableOpacity>
+          );
+        }}
       />
     </View>
-  )
-}
+  );
+};
 
 export default BusinessList;
 
 const styles = StyleSheet.create({
   listContainer: {
-    marginBottom: 10
+    marginBottom: 10,
   },
   businessLoadersContainer: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   title: {
     fontSize: 18,
     fontWeight: 'bold',
     marginLeft: 15,
-    marginBottom: 10
-  }
-})
+    marginBottom: 10,
+  },
+});

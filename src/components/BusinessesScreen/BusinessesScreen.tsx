@@ -14,8 +14,12 @@ function BusinessesScreen({businesses, thunkGetBusinessesData}: Props) {
   const [searchTerm, setSearchTerm] = useState('');
   const [memoizedSearchTerm, setMemoizedSearchTerm] = useState('');
   const [lowCostBusinesses, setLowCostBusinesses] = useState([] as Business[]);
-  const [averageCostBusinesses, setAverageCostBusinesses] = useState([] as Business[]);
-  const [highCostBusinesses, setHighCostBusinesses] = useState([] as Business[]);
+  const [averageCostBusinesses, setAverageCostBusinesses] = useState(
+    [] as Business[],
+  );
+  const [highCostBusinesses, setHighCostBusinesses] = useState(
+    [] as Business[],
+  );
   const [error, setError] = useState('');
   const businessesError = businesses?.error;
   const businessesCollection = businesses.data;
@@ -25,21 +29,27 @@ function BusinessesScreen({businesses, thunkGetBusinessesData}: Props) {
       thunkGetBusinessesData(searchTerm);
       setMemoizedSearchTerm(searchTerm);
     }
-  }
+  };
 
   useEffect(() => {
     thunkGetBusinessesData('');
-  }, [])
+  }, []);
 
   useEffect(() => {
-    setLowCostBusinesses(filterBusinessesByPriceType(businessesCollection, '$'));
-    setAverageCostBusinesses(filterBusinessesByPriceType(businessesCollection, '$$'));
-    setHighCostBusinesses(filterBusinessesByPriceType(businessesCollection, '$$$'));
-  }, [businessesCollection])
+    setLowCostBusinesses(
+      filterBusinessesByPriceType(businessesCollection, '$'),
+    );
+    setAverageCostBusinesses(
+      filterBusinessesByPriceType(businessesCollection, '$$'),
+    );
+    setHighCostBusinesses(
+      filterBusinessesByPriceType(businessesCollection, '$$$'),
+    );
+  }, [businessesCollection]);
 
   useEffect(() => {
-      setError(businessesError?.message ? businessesError.message : '');
-  }, [businessesError])
+    setError(businessesError?.message ? businessesError.message : '');
+  }, [businessesError]);
 
   return (
     <View style={styles.searchContainer}>
@@ -51,30 +61,30 @@ function BusinessesScreen({businesses, thunkGetBusinessesData}: Props) {
         onSearchTermChange={setSearchTerm}
         onSearchTermSubmit={onTermSubmit}
       />
-      {
-        error ? <ErrorMessage message={error}/> : (
-          <ScrollView>
-            <BusinessList
-              title="Cost Effective"
-              showsHorizontalScrollIndicator={false}
-              businesses={lowCostBusinesses}
-              loading={businesses.loading}
-            />
-            <BusinessList
-              title="Bit Pricier"
-              showsHorizontalScrollIndicator={false}
-              businesses={averageCostBusinesses}
-              loading={businesses.loading}
-            />
-            <BusinessList
-              title="Big Spender"
-              showsHorizontalScrollIndicator={false}
-              businesses={highCostBusinesses}
-              loading={businesses.loading}
-            />
-          </ScrollView>
-        )
-      }
+      {error ? (
+        <ErrorMessage message={error} />
+      ) : (
+        <ScrollView>
+          <BusinessList
+            title="Cost Effective"
+            showsHorizontalScrollIndicator={false}
+            businesses={lowCostBusinesses}
+            loading={businesses.loading}
+          />
+          <BusinessList
+            title="Bit Pricier"
+            showsHorizontalScrollIndicator={false}
+            businesses={averageCostBusinesses}
+            loading={businesses.loading}
+          />
+          <BusinessList
+            title="Big Spender"
+            showsHorizontalScrollIndicator={false}
+            businesses={highCostBusinesses}
+            loading={businesses.loading}
+          />
+        </ScrollView>
+      )}
     </View>
   );
 }
@@ -84,6 +94,6 @@ export default BusinessesScreen;
 const styles = StyleSheet.create({
   searchContainer: {
     backgroundColor: '#fff',
-    flex: 1
-  }
+    flex: 1,
+  },
 });

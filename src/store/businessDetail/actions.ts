@@ -6,6 +6,11 @@ import {
   FETCH_BUSINESS_DETAIL_SUCCESS,
 } from './types';
 
-export const fetchBusinessDetailRequest = (): BusinessDetailActionTypes => action(FETCH_BUSINESS_DETAIL_REQUEST);
-export const fetchBusinessDetailSuccess = (data: any): BusinessDetailActionTypes => action(FETCH_BUSINESS_DETAIL_SUCCESS, data);
-export const fetchBusinessDetailError = (data: any): BusinessDetailActionTypes => action(FETCH_BUSINESS_DETAIL_ERROR, data);
+export const fetchBusinessDetailRequest = (): BusinessDetailActionTypes =>
+  action(FETCH_BUSINESS_DETAIL_REQUEST);
+export const fetchBusinessDetailSuccess = (
+  data: any,
+): BusinessDetailActionTypes => action(FETCH_BUSINESS_DETAIL_SUCCESS, data);
+export const fetchBusinessDetailError = (
+  data: any,
+): BusinessDetailActionTypes => action(FETCH_BUSINESS_DETAIL_ERROR, data);

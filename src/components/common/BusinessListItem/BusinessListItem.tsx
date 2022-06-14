@@ -20,7 +20,9 @@ const BusinessListItem = ({business}: BusinessListItem) => {
         </View>
         <View style={styles.businessInfoReviews}>
           <FontAwesomeIcon name="eye" size={16} style={styles.reviewIcon} />
-          <Text style={styles.businessInfoTitle}>{business.review_count} Reviews</Text>
+          <Text style={styles.businessInfoTitle}>
+            {business.review_count} Reviews
+          </Text>
         </View>
       </View>
     </View>
@@ -31,17 +33,17 @@ export default BusinessListItem;
 
 const styles = StyleSheet.create({
   listItemContainer: {
-    marginLeft: 15
+    marginLeft: 15,
   },
   image: {
     width: 250,
     height: 120,
     borderRadius: 4,
-    marginBottom: 5
+    marginBottom: 5,
   },
   businessName: {
     fontWeight: 'bold',
-    marginBottom: 2
+    marginBottom: 2,
   },
   businessInfoContainer: {
     flexDirection: 'row',
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   businessInfoTitle: {
-    color: '#252528'
+    color: '#252528',
   },
   businessInfoReviews: {
     flexDirection: 'row',
@@ -60,11 +62,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: '#f7c01d',
     paddingRight: 3,
-    borderColor: '#000'
+    borderColor: '#000',
   },
   reviewIcon: {
     alignSelf: 'center',
     color: '#000',
-    paddingRight: 3
-  }
+    paddingRight: 3,
+  },
 });

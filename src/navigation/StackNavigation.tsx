@@ -11,12 +11,12 @@ const StackLayout = () => (
     <RootStack.Screen
       name={StackNavigationScreens.Business}
       component={ConnectedSearchScreen}
-      options={{ title: 'Business Search' }}
+      options={{title: 'Business Search'}}
     />
     <RootStack.Screen
       name={StackNavigationScreens.BusinessDetail}
       component={ConnectedBusinessDetailScreen}
-      options={{ title: ''}}
+      options={{title: ''}}
     />
   </RootStack.Navigator>
 );

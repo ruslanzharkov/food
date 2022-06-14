@@ -19,14 +19,14 @@ interface FetchBusinessDetailErrorAction {
 }
 
 export type BusinessDetailActionTypes =
-  FetchBusinessDetailRequestAction |
-  FetchBusinessDetailSuccessAction |
-  FetchBusinessDetailErrorAction;
+  | FetchBusinessDetailRequestAction
+  | FetchBusinessDetailSuccessAction
+  | FetchBusinessDetailErrorAction;
 
 export interface BusinessDetailState {
   readonly data: BusinessDetail;
   readonly loading: boolean;
-  readonly error?: BusinessError
+  readonly error?: BusinessError;
 }
 
 export interface BusinessDetail extends Business {

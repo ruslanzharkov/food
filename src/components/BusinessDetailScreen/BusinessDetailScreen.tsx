@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, Image, StyleSheet, Dimensions, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Dimensions,
+  FlatList,
+} from 'react-native';
 import {isEmpty} from 'lodash';
 
 import {Props} from './index';
@@ -9,7 +16,11 @@ import {addCommaForStringInCollection} from '../../utils/stringConverter';
 import BusinessDetailLoader from '../common/BusinessDetailLoader';
 import ErrorMessage from '../common/ErrorMessage/ErrorMessage';
 
-const BusinessDetailScreen = ({route, thunkGetBusinessDetailData, businessDetail}: Props) => {
+const BusinessDetailScreen = ({
+  route,
+  thunkGetBusinessDetailData,
+  businessDetail,
+}: Props) => {
   const [error, setError] = useState<string>('');
   const businessDetailError = businessDetail?.error;
   const businessDetailInfo = businessDetail.data;
@@ -23,15 +34,11 @@ const BusinessDetailScreen = ({route, thunkGetBusinessDetailData, businessDetail
   }, [businessDetailError]);
 
   if (businessDetail.loading) {
-    return (
-      <BusinessDetailLoader/>
-    );
+    return <BusinessDetailLoader />;
   }
 
   if (error) {
-    return (
-      <ErrorMessage message={error}/>
-    );
+    return <ErrorMessage message={error} />;
   }
 
   if (isEmpty(businessDetailInfo)) {
@@ -40,39 +47,62 @@ const BusinessDetailScreen = ({route, thunkGetBusinessDetailData, businessDetail
 
   return (
     <>
-      <Image source={{uri: businessDetailInfo.image_url}} style={styles.businessImage}/>
+      <Image
+        source={{uri: businessDetailInfo.image_url}}
+        style={styles.businessImage}
+      />
       <View style={styles.businessDetailOverlay}>
         <View style={styles.businessDetailContainer}>
           <View style={styles.businessDetailInfoStar}>
-            <FontAwesomeIcon name="star" size={16} style={styles.starIcon}/>
-            <Text style={styles.businessDetailTitle}>{businessDetailInfo.rating} Stars</Text>
+            <FontAwesomeIcon name="star" size={16} style={styles.starIcon} />
+            <Text style={styles.businessDetailTitle}>
+              {businessDetailInfo.rating} Stars
+            </Text>
           </View>
-          <Text style={styles.businessDetailName}>{businessDetailInfo.name}</Text>
+          <Text style={styles.businessDetailName}>
+            {businessDetailInfo.name}
+          </Text>
           <View style={styles.categories}>
             {businessDetailInfo.categories.map((category, index) => (
               <Text style={styles.businessDetailCategoryTitle} key={index}>
-                {addCommaForStringInCollection(category.title, businessDetailInfo.categories.length, index)}
+                {addCommaForStringInCollection(
+                  category.title,
+                  businessDetailInfo.categories.length,
+                  index,
+                )}
               </Text>
             ))}
           </View>
           <View style={styles.businessDetailLocation}>
-            <MaterialIcons name="location-on" size={20} style={styles.locationIcon}/>
-            {businessDetailInfo.location.display_address.map((displayAddress, index) => (
-              <Text key={index}>
-                {addCommaForStringInCollection(displayAddress, businessDetailInfo.location.display_address.length, index)}
-              </Text>
-            ))}
+            <MaterialIcons
+              name="location-on"
+              size={20}
+              style={styles.locationIcon}
+            />
+            {businessDetailInfo.location.display_address.map(
+              (displayAddress, index) => (
+                <Text key={index}>
+                  {addCommaForStringInCollection(
+                    displayAddress,
+                    businessDetailInfo.location.display_address.length,
+                    index,
+                  )}
+                </Text>
+              ),
+            )}
           </View>
           <FlatList
-            data={businessDetailInfo.photos.slice(1, businessDetailInfo.photos.length)}
+            data={businessDetailInfo.photos.slice(
+              1,
+              businessDetailInfo.photos.length,
+            )}
             contentContainerStyle={{marginBottom: '100%'}}
             keyExtractor={(photo, index) => index.toString()}
             showsVerticalScrollIndicator={false}
             renderItem={({item}) => (
-              <Image source={{uri: item}} style={styles.businessDetailImage}/>
+              <Image source={{uri: item}} style={styles.businessDetailImage} />
             )}
           />
-
         </View>
       </View>
     </>
@@ -137,5 +167,5 @@ export const styles = StyleSheet.create({
   },
   locationIcon: {
     color: '#000',
-  }
+  },
 });

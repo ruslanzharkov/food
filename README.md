@@ -4,7 +4,7 @@ Simple application for food search and view.
 
 ## Motivation
 
-This project was created as an example of how create React Native application using TypeScript, Redux and React Navigation for Screen routing with API interaction. Food seraching implemented via [yelp](https://www.yelp.com/)
+This project was created as an example of how to create a simple React Native application using TypeScript, Redux and React Navigation for Screen routing with API interaction. Food seraching implemented via [yelp](https://www.yelp.com/)
 
 ## Code style
 

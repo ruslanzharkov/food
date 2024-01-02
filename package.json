@@ -25,7 +25,7 @@
     "lodash": "^4.17.21",
     "react": "16.11.0",
     "react-content-loader": "^5.1.0",
-    "react-native": "^0.69.3",
+    "react-native": "^0.72.6",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-reanimated": "^2.10.0",
     "react-native-safe-area-context": "^3.0.7",
